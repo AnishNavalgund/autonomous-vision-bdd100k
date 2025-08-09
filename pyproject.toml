@@ -1,0 +1,53 @@
+[project]
+name = "autonomous-vision-bdd100k"
+version = "0.1.0"
+description = "End-to-end object detection pipeline using BDD100k dataset for autonomous vision"
+authors = [{ name = "Anish Navalgund", email = "anishk.navalgund@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.12"
+
+dependencies = [
+    "torch>=2.7.0,<3.0.0",
+    "torchvision>=0.22.0,<0.23.0",
+    "torchaudio>=2.7.0,<3.0.0",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.uv]
+dev-dependencies = [
+    "black",
+    "pylint",
+    "isort",
+    "jupyter",
+    "pre-commit>=4.2.0",
+]
+
+[tool.black]
+line-length = 79
+target-version = ["py312"]
+
+[tool.isort]
+profile = "black"
+line_length = 79
+src_paths = ["src"]
+known_first_party = ["autonomous_vision"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# disable doc strings for now
+[tool.pylint.'MESSAGES CONTROL']
+disable = [
+    "C0114", #  module 
+    "C0115", #  class 
+    "C0116", #  function 
+]
+
+[tool.pylint.format]
+max-line-length = 79
