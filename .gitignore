@@ -8,3 +8,5 @@ data/
 *.dist-info/
 build/
 dist/
+00_NonCommitableFiles/
+results/
