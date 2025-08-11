@@ -16,6 +16,11 @@ dependencies = [
     "plotly>=6.2.0",
     "opencv-python>=4.12.0.88",
     "easyimages>=1.91",
+    "pydantic>=2.11.7",
+    "pandas>=2.3.1",
+    "pydantic-settings>=2.10.1",
+    "pyarrow>=21.0.0",
+    "asyncio>=4.0.0",
 ]
 
 [build-system]
@@ -53,6 +58,10 @@ disable = [
     "C0114", #  module 
     "C0115", #  class 
     "C0116", #  function 
+    "R0911", #  too-many-return-statements
+    "R0912", #  too-many-branches
+    "R0914", #  too-many-locals
+    "R0915", #  too-many-statements
 ]
 
 [tool.pylint.format]
