@@ -11,3 +11,7 @@ dist/
 00_NonCommitableFiles/
 results/
 docs/
+runs/
+configs/
+*.pt
+outputs/
