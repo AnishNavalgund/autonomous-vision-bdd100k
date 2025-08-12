@@ -67,6 +67,8 @@ disable = [
     "R0912", #  too-many-branches
     "R0914", #  too-many-locals
     "R0915", #  too-many-statements
+    "R0913", #  too-many-arguements
+    "R0917", #  too-many-positional-arguements
 ]
 
 [tool.pylint.format]

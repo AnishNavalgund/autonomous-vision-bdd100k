@@ -12,15 +12,13 @@ from autonomous_vision.utils.helper import load_json_records
 def create_coco_dataset(
     bdd_labels_path: Path, output_path: Path, split_name: str
 ) -> None:
-    """
-    Convert BDD100K labels to COCO format.
+    """Convert BDD100K labels to COCO format.
 
     Args:
         bdd_labels_path: Path to BDD100K JSON labels file
         output_path: Path to save the COCO JSON file
         split_name: Name of the split (train/val)
     """
-
     # Initialize COCO structure
     coco_data = {
         "info": {"description": f"BDD100K {split_name}"},
@@ -43,14 +41,14 @@ def create_coco_dataset(
     for record in load_json_records(bdd_labels_path):
         image_name = record["name"]
 
-        w, h = Config.BDD100K_WIDTH, Config.BDD100K_HEIGHT
+        width, height = Config.BDD100K_WIDTH, Config.BDD100K_HEIGHT
 
         # Add image info
         image_info = {
             "id": len(coco_data["images"]) + 1,
             "file_name": image_name,
-            "width": w,
-            "height": h,
+            "width": width,
+            "height": height,
         }
         coco_data["images"].append(image_info)
 
@@ -66,18 +64,23 @@ def create_coco_dataset(
 
             # Get bbox coordinates from BDD
             box2d = obj["box2d"]
-            x1, y1, x2, y2 = box2d["x1"], box2d["y1"], box2d["x2"], box2d["y2"]
+            x1, y1, x2, y2 = (
+                box2d["x1"],
+                box2d["y1"],
+                box2d["x2"],
+                box2d["y2"],
+            )
 
-            width = x2 - x1
-            height = y2 - y1
+            bbox_width = x2 - x1
+            bbox_height = y2 - y1
 
-            # Add annotation only for needed for obj det
+            # Add annotation for object detection
             annotation = {
                 "id": annotation_id,
                 "image_id": image_info["id"],
                 "category_id": category_map[obj["category"]],
-                "bbox": [x1, y1, width, height],
-                "area": width * height,
+                "bbox": [x1, y1, bbox_width, bbox_height],
+                "area": bbox_width * bbox_height,
                 "iscrowd": 0,
             }
             coco_data["annotations"].append(annotation)
@@ -91,7 +94,6 @@ def create_coco_dataset(
 
 def main():
     """Convert both train and val splits to COCO format."""
-
     # Convert training split
     create_coco_dataset(
         bdd_labels_path=Config.train_labels,
