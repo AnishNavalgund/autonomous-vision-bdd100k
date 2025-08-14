@@ -11,11 +11,14 @@ RUN apt-get update && apt-get install -y \
     libgomp1 \
     && rm -rf /var/lib/apt/lists/*
 
-# Install core dependencies for data analysis
-RUN pip install pandas numpy matplotlib opencv-python jupyter seaborn plotly
+# Copy requirements file first for better Docker layer caching
+COPY docker_requirements.txt /tmp/docker_requirements.txt
+
+# Install Python dependencies from requirements file
+RUN pip install --no-cache-dir -r /tmp/docker_requirements.txt
 
 # Copy notebooks and data analysis code
-COPY notebooks/ /home/jovyan/work/notebooks/
+COPY notebooks/DataAnalysis/ /home/jovyan/work/notebooks/
 
 # Set working directory
 WORKDIR /home/jovyan/work

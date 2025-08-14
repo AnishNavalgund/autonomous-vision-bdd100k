@@ -30,7 +30,6 @@ autonomous-vision-bdd100k/
 ├── data/                                    # Dataset storage and processing
 │   └── parsed_data/                         # Parsed CSV/Parquet files (Will be created by parser_core.py also committed)
 ├── src/autonomous_vision/                   # Core Python package
-│   ├── __init__.py                          
 │   ├── config.py                            # Paths and constants
 │   ├── data_parser/                         # Data parsing and conversion
 │   │   ├── __init__.py
@@ -38,15 +37,11 @@ autonomous-vision-bdd100k/
 │   │   ├── parsing_logic.py                 # Parsing orchestrator
 │   │   └── bdd_to_coco.py                   # BDD to COCO format converter
 │   ├── object_detection/                    # YOLO training and inference
-│   │   ├── __init__.py
 │   │   ├── train_yolo.py                    # Main YOLO training and Eval script
 │   │   ├── data_loader.py                   # COCO data loading utities
 │   │   ├── label_utils.py                   # YOLO label creator
 │   │   └── yolo_overlay.py                  # YOLO inference and visualization
 │   └── utils/                               # Utility functions
-│       ├── __init__.py
-│       ├── helper.py                        # General utility functions
-│       └── schemas.py                       # Data schemas (have used only for parser)
 ├── notebooks/                               
 │   ├── DataAnalysis/                        # Exploratory data analysis
 │   │   ├── 01_EDA_RawData.ipynb             # Raw data exploration
@@ -59,6 +54,7 @@ autonomous-vision-bdd100k/
 ├── .gitignore                               # Git ignore patterns
 ├── Dockerfile                               # Docker container definition
 ├── docker-compose.yml                       # Docker Compose configuration
+├── docker_requirements.txt                  # Docker requirements file
 ├── pyproject.toml                           # Project configuration and dependencies                        
 └── uv.lock                                  # Dependency lock file
 
@@ -114,6 +110,7 @@ Note: This will start a jupyter notebook server at `http://localhost:8888`
 
 ```bash
 uv sync
+source .venv/bin/activate
 ```
 ### 2. Pre-commit hooks 
 
