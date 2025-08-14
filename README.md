@@ -12,16 +12,16 @@ The project follows this sequential workflow:
 
 1. **Data Ingestion**: Raw BDD100K JSON labels and images
 2. **Data Parsing**: Convert BDD100K format to structured CSV/Parquet files
-3. **Format Conversion**: Transform BDD100K annotations to COCO format
+3. **Format Conversion**: Transform BDD100K annotations to COCO format for custom training pipeline
 4. **YOLO Preparation**: Convert COCO to YOLO format for training
 5. **Model Training**: Train YOLO models on prepared data
-6. **Analysis**: Comprehensive quantitative and qualitative evaluation with overlay visualization
+6. **Analysis**: Quantitative and qualitative analysis with overlay visualization
 
 ## Complete Project Structure
 
 ```
 autonomous-vision-bdd100k/
-├── README.md                                # This file
+├── README.md                                
 ├── docs/                                    # Documentation
 │   ├── 01_data_analysis.md                  # BDD100K dataset analysis report 
 │   ├── 02_model_selection.md                # Model Selection, Architecture and Training Settings
@@ -145,6 +145,6 @@ Overlay images will be saved on the disk.
 
 1. [Exploratory data analysis](docs/01_data_analysis.md) 
 2. [Model Selection, Architecture and Training Settings](docs/02_model_selection.md) 
-3. [Mectric Selection, Quantitative, Qualitative Analysis and Improvement areas](docs/03_model_analysis.md) - 
+3. [Mectric Selection, Quantitative, Qualitative Analysis and Improvement areas](docs/03_model_analysis.md) 
 
 
