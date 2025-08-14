@@ -2,7 +2,10 @@
 __pycache__/
 *.pyc
 .DS_Store
+# Exclude entire data directory but allow specific parquet files
 data/
+!data/parsed_data/
+!data/parsed_data/*.parquet
 .python-version
 *.egg-info/
 *.dist-info/
