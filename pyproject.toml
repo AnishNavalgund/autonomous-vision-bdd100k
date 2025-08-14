@@ -25,6 +25,8 @@ dependencies = [
     "mlflow>=3.2.0",
     "streamlit>=1.48.0",
     "fiftyone>=1.7.2",
+    "seaborn>=0.13.2",
+    "matplotlib-venn>=1.1.2",
 ]
 
 [build-system]
@@ -69,6 +71,7 @@ disable = [
     "R0915", #  too-many-statements
     "R0913", #  too-many-arguements
     "R0917", #  too-many-positional-arguements
+    "E1101",
 ]
 
 [tool.pylint.format]

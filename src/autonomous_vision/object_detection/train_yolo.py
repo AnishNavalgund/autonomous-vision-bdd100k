@@ -48,7 +48,7 @@ def main():
 
     # Create empty labels for unlabeled images to prevent background issue
     print("==> Creating empty labels for unlabeled images...")
-    unlabeled_list_path = Path("results/lists/unlabeled_train.txt")
+    unlabeled_list_path = Path("data/lists/unlabeled_train.txt")
     if unlabeled_list_path.exists():
         n_empty = create_empty_labels_for_unlabeled_images(
             unlabeled_list_path, train_labels_dir
@@ -64,7 +64,7 @@ def main():
         train_images_dir,
         val_images_dir,
         names,
-        out_yaml=Path("configs/datasets/_bdd10_auto.yaml"),
+        out_yaml=Path("data/yolo_data/dataset.yaml"),
     )
     print(f"==> Dataset YAML: {tmp_yaml}")
 
@@ -102,7 +102,7 @@ def main():
     model.val(
         data=str(tmp_yaml),
         save_json=True,
-        plots=True,
+        plots=False,
         device=C.device,
         verbose=True,
     )

@@ -11,15 +11,15 @@ def sanity_check():
 
     # File paths for both train and val
     train_files = {
-        "COCO": Path("results/coco_data/bdd100k_train_coco.json"),
-        "CSV": Path("results/parsed_data/train_data.csv"),
-        "Parquet": Path("results/parsed_data/train_data.parquet"),
+        "COCO": Path("data/coco_data/bdd100k_train_coco.json"),
+        "CSV": Path("data/parsed_data/train_data.csv"),
+        "Parquet": Path("data/parsed_data/train_data.parquet"),
     }
 
     val_files = {
-        "COCO": Path("results/coco_data/bdd100k_val_coco.json"),
-        "CSV": Path("results/parsed_data/val_data.csv"),
-        "Parquet": Path("results/parsed_data/val_data.parquet"),
+        "COCO": Path("data/coco_data/bdd100k_val_coco.json"),
+        "CSV": Path("data/parsed_data/val_data.csv"),
+        "Parquet": Path("data/parsed_data/val_data.parquet"),
     }
 
     # Check if all files exist

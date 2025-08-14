@@ -10,18 +10,26 @@ class Config(BaseSettings):
     # Get the project root directory (two levels up from this config file)
     project_root: ClassVar[Path] = Path(__file__).parent.parent.parent
 
+    # Raw BDD100K JSON files
     train_labels: Path = (
-        project_root / "data/BDD_labels/bdd100k_labels_images_train.json"
+        project_root / "data/raw_bdd_jsons/bdd100k_labels_images_train.json"
     )
     val_labels: Path = (
-        project_root / "data/BDD_labels/bdd100k_labels_images_val.json"
+        project_root / "data/raw_bdd_jsons/bdd100k_labels_images_val.json"
     )
 
-    train_images: Path = project_root / "data/images/train"
-    val_images: Path = project_root / "data/images/val"
+    # YOLO training data
+    train_images: Path = project_root / "data/yolo_data/images/train"
+    val_images: Path = project_root / "data/yolo_data/images/val"
+    train_labels_yolo: Path = project_root / "data/yolo_data/labels/train"
+    val_labels_yolo: Path = project_root / "data/yolo_data/labels/val"
+    dataset_yaml: Path = project_root / "data/yolo_data/dataset.yaml"
 
-    parsed_data: Path = project_root / "results/parsed_data"
-    coco_data: Path = project_root / "results/coco_data"
+    # Parsed data (CSV/Parquet)
+    parsed_data: Path = project_root / "data/parsed_data"
+
+    # COCO format data
+    coco_data: Path = project_root / "data/coco_data"
 
     detection_classes: list[str] = [
         "person",
@@ -40,19 +48,18 @@ class Config(BaseSettings):
     BDD100K_WIDTH: int = 1280
     BDD100K_HEIGHT: int = 720
 
-    train_json: Path = (
-        project_root / "results/coco_data/bdd100k_train_coco.json"
-    )
-    val_json: Path = project_root / "results/coco_data/bdd100k_val_coco.json"
+    # COCO JSON files
+    train_json: Path = project_root / "data/coco_data/bdd100k_train_coco.json"
+    val_json: Path = project_root / "data/coco_data/bdd100k_val_coco.json"
 
     # Training output
     project: Path = project_root / "runs/train"
-    run_name: str = "yolo11s_NoFreeze"
+    run_name: str = "yolo11m_30epochs"
 
     # Model & schedule
-    model_name: str = "yolo11s.pt"
+    model_name: str = "yolo11m.pt"
     imgsz: int = 640
-    epochs: int = 20
+    epochs: int = 50
     batch: int = -1  # auto-batch to VRAM
     device: int = 0
 

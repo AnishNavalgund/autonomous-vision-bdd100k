@@ -5,8 +5,8 @@ from typing import Any, List, Optional
 
 import cv2
 
-IMG_DIR = "./data/images/test"
-OUTPUT_VIDEO = "./results/videos/test.mp4"
+IMG_DIR = "./data/yolo_data/images/test"
+OUTPUT_VIDEO = "./outputs/videos/test.mp4"
 FPS = 0.5
 
 # make output directory

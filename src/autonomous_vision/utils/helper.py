@@ -2,6 +2,8 @@ import json
 from pathlib import Path
 from typing import Dict, Iterable
 
+import pandas as pd
+
 
 def ensure_dir(path: Path) -> None:
     """Create directory if it doesn't exist."""
@@ -64,3 +66,20 @@ def coco_bbox_to_yolo_norm(x, y, width, height, img_width, img_height):
     return coco_xywh_to_yolo(
         center_x, center_y, width, height, img_width, img_height
     )
+
+
+def load_val_parquet(parquet_path: Path) -> pd.DataFrame:
+    """
+    Load BDD100K validation metadata parquet file.
+
+    Args:
+        parquet_path (Path): Path to val_data.parquet
+
+    Returns:
+        pd.DataFrame: Data with columns like scene, weather, time, etc.
+    """
+    if not parquet_path.exists():
+        raise FileNotFoundError(f"{parquet_path} does not exist.")
+
+    df = pd.read_parquet(parquet_path)
+    return df

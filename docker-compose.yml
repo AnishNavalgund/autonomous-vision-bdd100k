@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  bdd100k-analysis:
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/home/jovyan/work/notebooks
+      - ./data:/home/jovyan/work/data
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=
+    working_dir: /home/jovyan/work
+    restart: unless-stopped
